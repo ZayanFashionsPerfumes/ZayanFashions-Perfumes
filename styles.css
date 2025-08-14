@@ -779,9 +779,44 @@ p {
     .container {
         padding: 0 3%;
     }
+    
+    /* Extra small mobile section fixes */
+    .about-content,
+    .vision-content,
+    .contact-content {
+        padding: 0 0.3rem;
+        gap: 1rem;
+    }
+    
+    .product-subsection {
+        padding: 0 0.3rem;
+    }
+    
+    .why-us-grid,
+    .lifestyle-grid {
+        padding: 0 0.3rem;
+        gap: 0.8rem;
+    }
+    
+    .presence-content {
+        padding: 0 0.3rem;
+        gap: 1rem;
+    }
+    
+    .store-counts {
+        gap: 0.8rem;
+    }
+    
+    .section-header {
+        padding: 0 0.3rem;
+    }
+    
+    .subsection-title {
+        padding: 0 0.3rem;
+    }
 }
 
-/* Landscape orientation adjustments for mobile */
+/* Landscape mobile orientation fixes */
 @media (max-height: 500px) and (orientation: landscape) {
     .hero {
         min-height: 100vh;
@@ -794,23 +829,94 @@ p {
     }
     
     .hero-logo-img {
-        width: clamp(80px, 15vw, 100px);
-        max-height: 100px;
+        width: clamp(60px, 15vw, 80px);
+        max-height: 80px;
     }
     
     .hero-title {
-        font-size: clamp(1.4rem, 4vw, 1.8rem);
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-subtitle,
+    .hero-tagline,
+    .hero-subtitle-arabic {
+        margin-bottom: 0.3rem;
+    }
+    
+    .hero-description {
+        display: none; /* Hide description on landscape mobile to save space */
     }
     
     .hero-buttons {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 0.5rem;
     }
     
     .btn {
-        width: auto;
-        min-width: clamp(120px, 25vw, 150px);
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Landscape mobile section fixes */
+    .about-section,
+    .vision-section,
+    .products-section,
+    .why-us-section,
+    .presence-section,
+    .lifestyle-section,
+    .contact-section {
+        padding: clamp(30px, 6vw, 40px) 0;
+    }
+    
+    .about-content,
+    .vision-content,
+    .contact-content {
+        gap: 1rem;
+    }
+    
+    .product-subsection {
+        margin-bottom: 2rem;
+    }
+    
+    .why-us-grid,
+    .lifestyle-grid {
+        gap: 1rem;
+    }
+    
+    .presence-content {
+        gap: 1rem;
+    }
+    
+    .store-counts {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .footer {
+        padding: clamp(20px, 5vw, 30px) 0 clamp(10px, 3vw, 15px) 0;
+    }
+    
+    .footer-content {
+        gap: 1rem;
+    }
+}
+
+/* High DPI and modern mobile devices */
+@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px),
+       (min-resolution: 192dpi) and (max-width: 768px) {
+    /* Ensure crisp rendering on high DPI mobile devices */
+    .hero-logo-img,
+    .nav-logo img,
+    .about-img,
+    .vision-img,
+    .perfume-image img,
+    .garment-image img,
+    .lifestyle-image img,
+    .contact-logo-img,
+    .footer-logo-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -webkit-font-smoothing: antialiased;
     }
 }
 
@@ -834,7 +940,7 @@ p {
     }
 }
 
-/* Increase touch targets */
+/* Increase touch targets for mobile */
 @media (max-width: 768px) {
     .nav-link {
         padding: 1rem 0.5rem;
@@ -855,68 +961,10 @@ p {
         min-width: 48px;
         min-height: 48px;
     }
-}
-
-/* Additional mobile optimizations */
-@media (max-width: 480px) {
-    /* Improve mobile navigation */
-    .nav-menu.active {
-        padding: 2rem 1rem;
-    }
     
-    .nav-item {
-        margin: 0.5rem 0;
-    }
-    
-    /* Better mobile grid layouts */
-    .perfumes-grid,
-    .garments-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .why-us-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .lifestyle-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    /* Mobile-friendly contact section */
-    .contact-content {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .contact-visual {
-        order: -1;
-    }
-    
-    /* Mobile-friendly store counts */
-    .store-counts {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .store-count {
-        text-align: center;
-    }
-}
-
-/* High DPI display optimizations */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .hero-logo-img,
-    .nav-logo img,
-    .about-img,
-    .vision-img,
-    .perfume-image img,
-    .garment-image img,
-    .lifestyle-image img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
+    .back-to-top {
+        min-width: 48px;
+        min-height: 48px;
     }
 }
 
@@ -1718,392 +1766,5 @@ button, a, .nav-link, .btn, .social-link {
         background: transparent !important;
         color: var(--black-primary) !important;
         border: 1px solid var(--black-primary) !important;
-    }
-}
-
-/* Additional mobile fixes to prevent horizontal scroll */
-@media (max-width: 768px) {
-    /* Ensure all sections are properly contained */
-    section {
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    /* Fix hero section mobile layout */
-    .hero {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-    
-    .hero-content {
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-        max-width: 95vw;
-    }
-    
-    /* Fix navigation mobile layout */
-    .navbar {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    .nav-container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    /* Fix mobile menu positioning */
-    .nav-menu {
-        left: -100vw;
-        width: 100vw;
-    }
-    
-    .nav-menu.active {
-        left: 0;
-    }
-    
-    /* Ensure buttons don't overflow */
-    .btn {
-        max-width: 90vw;
-        width: auto;
-        min-width: 200px;
-    }
-    
-    /* Fix grid layouts on mobile */
-    .perfumes-grid,
-    .garments-grid,
-    .why-us-grid,
-    .lifestyle-grid {
-        width: 100%;
-        max-width: 100vw;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    /* Fix container padding on mobile */
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        width: 100%;
-        max-width: 100vw;
-    }
-}
-
-/* Extra small mobile devices */
-@media (max-width: 480px) {
-    .hero-content {
-        max-width: 98vw;
-        margin: 0.5rem;
-        padding: 1rem;
-    }
-    
-    .btn {
-        max-width: 95vw;
-        min-width: 180px;
-    }
-    
-    .container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-    
-    .nav-container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-}
-
-/* Landscape mobile orientation fixes */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        min-height: 100vh;
-        padding: 0.5rem 0;
-    }
-    
-    .hero-content {
-        padding: 1rem;
-        gap: 0.5rem;
-    }
-    
-    .hero-logo-img {
-        width: clamp(60px, 15vw, 80px);
-        max-height: 80px;
-    }
-    
-    .hero-title {
-        font-size: clamp(1.2rem, 4vw, 1.6rem);
-        margin-bottom: 0.5rem;
-    }
-    
-    .hero-subtitle,
-    .hero-tagline,
-    .hero-subtitle-arabic {
-        margin-bottom: 0.3rem;
-    }
-    
-    .hero-description {
-        display: none; /* Hide description on landscape mobile to save space */
-    }
-    
-    .hero-buttons {
-        gap: 0.5rem;
-    }
-    
-    .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-
-/* Contact Section Mobile Responsiveness */
-@media (max-width: 768px) {
-    .contact-section {
-        padding: clamp(40px, 10vw, 60px) 0;
-    }
-    
-    .contact-content {
-        flex-direction: column;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
-    
-    .contact-text {
-        order: 2;
-        text-align: center;
-    }
-    
-    .contact-visual {
-        order: 1;
-        text-align: center;
-    }
-    
-    .contact-details {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-    }
-    
-    .contact-item {
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-    }
-    
-    .qr-code {
-        margin: 0 auto;
-    }
-    
-    .contact-logo-img {
-        width: clamp(80px, 20vw, 120px);
-        height: auto;
-    }
-}
-
-/* Footer Mobile Responsiveness */
-@media (max-width: 768px) {
-    .footer {
-        padding: clamp(40px, 10vw, 60px) 0 clamp(20px, 5vw, 30px) 0;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 2rem;
-        text-align: center;
-        padding: 0 1rem;
-    }
-    
-    .footer-logo {
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-    
-    .footer-text {
-        text-align: center;
-        max-width: 100%;
-    }
-    
-    .footer-social {
-        justify-content: center;
-        gap: 1rem;
-    }
-    
-    .social-link {
-        width: clamp(40px, 10vw, 50px);
-        height: clamp(40px, 10vw, 50px);
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-        padding: 1rem;
-    }
-}
-
-/* Landscape mobile orientation fixes for contact and footer */
-@media (max-height: 500px) and (orientation: landscape) {
-    .contact-section {
-        padding: clamp(20px, 5vw, 30px) 0;
-    }
-    
-    .contact-content {
-        gap: 1rem;
-    }
-    
-    .footer {
-        padding: clamp(20px, 5vw, 30px) 0 clamp(10px, 3vw, 15px) 0;
-    }
-    
-    .footer-content {
-        gap: 1rem;
-    }
-}
-
-/* Final mobile fixes to ensure perfect responsiveness */
-@media (max-width: 768px) {
-    /* Fix any potential overflow issues */
-    * {
-        max-width: 100vw;
-        box-sizing: border-box;
-    }
-    
-    /* Ensure proper text wrapping */
-    .hero-title,
-    .hero-subtitle,
-    .hero-tagline,
-    .hero-subtitle-arabic,
-    .section-title,
-    .subsection-title {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    /* Fix button text wrapping */
-    .btn {
-        white-space: normal;
-        text-align: center;
-        word-wrap: break-word;
-    }
-    
-    /* Ensure proper image scaling */
-    img {
-        max-width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-    
-    /* Fix any absolute positioned elements */
-    .hero-background,
-    .dubai-skyline,
-    .texture-overlay {
-        left: 0;
-        right: 0;
-        width: 100vw;
-        max-width: 100vw;
-    }
-    
-    /* Fix scroll indicator positioning */
-    .scroll-indicator {
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 100vw;
-    }
-    
-    /* Fix back to top button */
-    .back-to-top {
-        right: clamp(0.8rem, 3vw, 1rem);
-        max-width: 100vw;
-    }
-    
-    /* Ensure proper section containment */
-    .about-section,
-    .vision-section,
-    .products-section,
-    .why-us-section,
-    .presence-section,
-    .lifestyle-section,
-    .contact-section {
-        width: 100%;
-        max-width: 100vw;
-        overflow: hidden;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    /* Fix grid items */
-    .perfume-category,
-    .garment-category,
-    .why-us-item,
-    .lifestyle-item {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-/* Extra small mobile devices final fixes */
-@media (max-width: 480px) {
-    /* Ensure all content fits within viewport */
-    .hero-content,
-    .about-content,
-    .vision-content,
-    .contact-content {
-        width: 100%;
-        max-width: 98vw;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    /* Fix any remaining overflow issues */
-    .nav-container,
-    .container {
-        width: 100%;
-        max-width: 100vw;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-    
-    /* Ensure proper button sizing */
-    .btn {
-        width: 100%;
-        max-width: 95vw;
-        min-width: auto;
-    }
-    
-    /* Fix any remaining text overflow */
-    .hero-description p,
-    .about-description,
-    .contact-message p {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-}
-
-/* High DPI and modern mobile devices */
-@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px),
-       (min-resolution: 192dpi) and (max-width: 768px) {
-    /* Ensure crisp rendering on high DPI mobile devices */
-    .hero-logo-img,
-    .nav-logo img,
-    .about-img,
-    .vision-img,
-    .perfume-image img,
-    .garment-image img,
-    .lifestyle-image img,
-    .contact-logo-img,
-    .footer-logo-img {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-        -webkit-font-smoothing: antialiased;
     }
 }
