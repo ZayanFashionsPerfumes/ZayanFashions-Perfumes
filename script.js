@@ -606,6 +606,34 @@ function initMobileOptimizations() {
         document.body.style.webkitOverflowScrolling = 'touch';
     }
     
+    // Prevent horizontal scroll on mobile
+    function preventHorizontalScroll() {
+        if (window.innerWidth <= 768) {
+            document.body.style.overflowX = 'hidden';
+            document.documentElement.style.overflowX = 'hidden';
+            
+            // Ensure all sections respect viewport width
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.maxWidth = '100vw';
+                section.style.overflowX = 'hidden';
+            });
+            
+            // Fix any elements that might cause horizontal scroll
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(el => {
+                if (el.scrollWidth > window.innerWidth) {
+                    el.style.maxWidth = '100vw';
+                    el.style.overflowX = 'hidden';
+                }
+            });
+        }
+    }
+    
+    // Call on load and resize
+    preventHorizontalScroll();
+    window.addEventListener('resize', preventHorizontalScroll);
+    
     // Mobile gesture support
     let touchStartY = 0;
     let touchEndY = 0;
@@ -657,6 +685,12 @@ function initMobileOptimizations() {
         }
         
         window.addEventListener('scroll', requestTick, {passive: true});
+        
+        // Fix mobile viewport issues
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover');
+        }
     }
 }
 
